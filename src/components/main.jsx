@@ -5,7 +5,7 @@ import RoomSelection from './room';
 import ExtrasSelection from './extra';
 import Calculator from './calculator';
 import { fetchRooms } from '../assets/roomApi';
-import { fetchExtras } from '..assets/extrasApi';
+import { fetchExtras } from '../assets/extrasApi';
 
 const MainComponent = () => {
   const [rooms, setRooms] = useState([]);
