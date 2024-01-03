@@ -7,6 +7,8 @@ body {
   .search {
     text-align: center;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
   }
   
   .logo {
@@ -20,6 +22,7 @@ body {
     color: #ffff;
     padding: 20px;
     border-radius: 8px;
+    width: 100%;
    
   }
   
@@ -63,4 +66,62 @@ body {
   a:hover {
     color: #0066cc;
   }
+  .search-container {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+  }
   
+  .search-aside {
+    width: 250px;
+    padding: 20px;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: green;
+    font-size: larger;
+    outline: none;
+  }
+  
+  .search-aside h2 {
+    margin-bottom: 10px;
+  }
+  
+  .search-aside label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .search-aside select,
+  .search-aside input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+  
+  .search-content {
+    flex: 1;
+    padding: 20px;
+  }
+  .search-progress-bar {
+    margin-top: 20px;
+    width: 250px;
+  }
+  
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+  }
+  
+  .search-content input[type="range"] {
+    width: 100%;
+    color: green;
+    margin-top: 5px;
+  }
+  /* Media query for smaller screens (adjust as needed) */
+  @media (max-width: 768px) {
+    .search-aside {
+      width: 100%;
+    }
+  }
