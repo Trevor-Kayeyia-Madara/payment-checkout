@@ -7,20 +7,20 @@ const Home = () => (
   <div className="home">
   
     <div className="hero">
-      <h1>Search, Book, Checkout</h1>
+      <h1>SEARCH</h1>
       <nav>
         <ul>
           <li>
-            <Link to="/search">1. Search</Link>
+            <Link to="/search"><span className='circle'>1</span> Search</Link>
           </li>
           <li>
-            <Link to="/book">2. Book</Link>
+            <Link to="/book"><span className='circle'>2</span> Book</Link>
           </li>
           <li>
-            <Link to="/checkout">3. Checkout</Link>
+            <Link to="/checkout"><span className='circle'>3</span> Checkout</Link>
           </li>
           <li>
-            <Link to="/thank-you">4. Thank You</Link>
+            <Link to="/thank-you"><span className='circle'>4</span> Thank You</Link>
           </li>
         </ul>
       </nav>

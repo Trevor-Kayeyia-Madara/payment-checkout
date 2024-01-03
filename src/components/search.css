@@ -4,7 +4,7 @@ body {
     font-family: 'Arial', sans-serif;
   }
   
-  .home {
+  .search {
     text-align: center;
     padding: 20px;
   }
@@ -20,6 +20,7 @@ body {
     color: #ffff;
     padding: 20px;
     border-radius: 8px;
+   
   }
   
   nav {
@@ -38,9 +39,15 @@ body {
   }
   
   a {
+    text-transform: uppercase;
     text-decoration: none;
     color: #fff;
     font-weight: bold;
+  }
+  span.active {
+    border-radius: 50%;
+    background-color: green;
+    
   }
   .circle {
     border: 2px solid white; /* Set the border style and color */
