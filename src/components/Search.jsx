@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
- import villa from './images/sultan.jpg';
- import dyke from './images/dyke collage.jpg';
+import villa from './images/sultan.jpg';
+import dyke from './images/dyke collage.jpg';
 import './search.css';
 
 function Search() {
@@ -37,9 +37,10 @@ function Search() {
   const handleMaxNightPriceChange = (event) => {
     setMaxNightPrice(parseInt(event.target.value, 10));
   };
-  const handleBookNow = (roomType, price) => {
+  const handleBookNow = (roomType, price, roomTypeImage) => {
     const bookingData = {
       roomType,
+      roomTypeImage,
       checkInDate,
       checkOutDate,
       guests: selectedGuests,
@@ -169,7 +170,7 @@ function Search() {
                 <div className="user-icon">8 Guests</div>
                 <div className="size-icon">40ft</div>
               </div>
-              <button onClick={() => handleBookNow('Villa Sultan', 200)}>Book Now for $200</button>
+              <button onClick={() => handleBookNow('Villa Sultan', 200, villa)}>Book Now for $200</button>
             </div>
           </div>
 
@@ -180,10 +181,10 @@ function Search() {
               <h2>Dyke Cottage</h2>
               <p>Beach House</p>
               <div className="icons">
-                <div className="user-icon">8 Guests</div>
+                <div className="user-icon">12 Guests</div>
                 <div className="size-icon">40ft</div>
               </div>
-              <button onClick={() => handleBookNow('Dyke Cottage', 200)}>Book Now for $200</button>
+              <button onClick={() => handleBookNow('Dyke Cottage', 200, dyke)}>Book Now for $180</button>
             </div>
           </div>
         </div>
