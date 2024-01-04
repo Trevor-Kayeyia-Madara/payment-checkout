@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .book {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .logo {
+    max-width: 200px;
+    margin-bottom: 20px;
+    background-color:gray;
+  }
+  
+  .hero {
+    background-image: url('./images/hotel_feture_1.jpg');
+    color: #ffff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+   
+  }
+  
+  nav {
+    margin-top: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  li {
+    margin: 10px;
+  }
+  
+  a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+  }
+  span.active {
+    border-radius: 50%;
+    background-color: green;
+    
+  }
+  .circle {
+    border: 2px solid white; /* Set the border style and color */
+    border-radius: 50%; /* Make it circular */
+    display: inline-block;
+    width: 20px; /* Set the width of the circle */
+    height: 20px; /* Set the height of the circle */
+    text-align: center; /* Center the number inside the circle */
+    line-height: 20px; /* Center the number vertically */
+    margin-right: 5px; /* Add some spacing between the circle and the text */
+  }
+  
+  a:hover {
+    color: #0066cc;
+  }
