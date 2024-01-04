@@ -4,14 +4,14 @@ import './book.css';
 
 function Book() {
     // Use the useLocation hook to get the state passed during navigation
-    const location = useLocation();
-    const bookingDetails = location.state && location.state.bookingDetails;
-  
-    if (!bookingDetails) {
-      // Handle the case where bookingDetails is not available
-      return <div>No booking details found.</div>;
-    }
-  
+  const location = useLocation();
+  const bookingDetails = location.state && location.state.bookingDetails;
+
+  if (!bookingDetails) {
+    // Handle the case where bookingDetails is not available
+    return <div>No booking details found.</div>;
+  }
+
 
   return (
     <div className='book'>
@@ -35,7 +35,7 @@ function Book() {
         </nav>
       </div>
       <div>
-          <p>Property: {bookingDetails.property}</p>
+          <p>Property: {bookingDetails.roomType}</p>
           <p>Check-in Date: {bookingDetails.checkInDate}</p>
           <p>Check-out Date: {bookingDetails.checkOutDate}</p>
           <p>Guests: {bookingDetails.guests}</p>

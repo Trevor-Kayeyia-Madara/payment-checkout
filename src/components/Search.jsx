@@ -37,9 +37,9 @@ function Search() {
   const handleMaxNightPriceChange = (event) => {
     setMaxNightPrice(parseInt(event.target.value, 10));
   };
-  const handleBookNow = (property, price) => {
+  const handleBookNow = (roomType, price) => {
     const bookingData = {
-      property,
+      roomType,
       checkInDate,
       checkOutDate,
       guests: selectedGuests,
