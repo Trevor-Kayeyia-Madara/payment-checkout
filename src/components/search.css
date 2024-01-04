@@ -100,9 +100,11 @@ body {
   }
   
   .search-content {
-    flex: 1;
-    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
   }
+  
   .search-progress-bar {
     margin-top: 20px;
     width: 250px;
@@ -118,6 +120,60 @@ body {
     width: 100%;
     color: green;
     margin-top: 5px;
+  }
+  .search-card {
+    width: 300px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .card-details {
+    padding: 16px;
+  }
+  
+  .card-details h2 {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+  }
+  
+  .card-details p {
+    color: #555;
+    margin-bottom: 16px;
+  }
+  
+  .icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  
+  .user-icon,
+  .size-icon {
+    color: grey;
+    padding: 8px;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #fff;
+    color: green;
+    border: 2px solid green;
+    padding: 20px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    transform:translateY(0.4);
   }
   /* Media query for smaller screens (adjust as needed) */
   @media (max-width: 768px) {
