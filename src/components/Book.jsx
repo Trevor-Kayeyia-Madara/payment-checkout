@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './book.css';
 
 function Book() {
-    // Use the useLocation hook to get the state passed during navigation
   const location = useLocation();
   const bookingDetails = location.state && location.state.bookingDetails;
 
+  const [extras, setExtras] = useState({
+    vat: 22, // VAT in percentage
+  });
+
+  const calculateTotalPrice = () => {
+    const basePrice = bookingDetails.totalPrice || 0;
+    const vat = (extras.vat / 100) * basePrice;
+
+    return basePrice + vat;
+  };
+
+  useEffect(() => {
+    // Update the total price whenever bookingDetails or extras change
+    // You can also include other dependencies if needed
+    calculateTotalPrice();
+  }, [bookingDetails, extras]);
+
   if (!bookingDetails) {
-    // Handle the case where bookingDetails is not available
     return <div>No booking details found.</div>;
   }
-
-
   return (
     <div className='book'>
        <div className="hero">
@@ -34,14 +47,23 @@ function Book() {
           </ul>
         </nav>
       </div>
-      <div>
-          <p>Property: {bookingDetails.roomType}</p>
-          <p>Check-in Date: {bookingDetails.checkInDate}</p>
-          <p>Check-out Date: {bookingDetails.checkOutDate}</p>
-          <p>Guests: {bookingDetails.guests}</p>
-          <p>Nights: {bookingDetails.nights}</p>
-          <p>Total Price: {bookingDetails.totalPrice}</p>
+      <div className='book-container'>
+          <div className='book-aside'>
+            <div className='book-data'>
+              <img src={bookingDetails.roomTypeImage} alt={bookingDetails.roomType} />
+              <h5 className='title'>YOUR RESERVATION</h5>
+              <p>Property: {bookingDetails.roomType}</p>
+              <p>Check-in Date: {bookingDetails.checkInDate}</p>
+              <p>Check-out Date: {bookingDetails.checkOutDate}</p>
+              <p>Guests: {bookingDetails.guests}</p>
+              <p>Nights: {bookingDetails.nights}</p>
+              <p>Total Price: ${calculateTotalPrice().toFixed(2)}</p>
+           </div>
+          </div>
         </div>
+        <p><i>NOT INCL : 3 $ CITY TAX ( person * night )<br />
+INCLUDED : 22 % VAT ALREADY APPLIED
+</i></p>
     </div>
   )
 }

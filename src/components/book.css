@@ -66,3 +66,43 @@ body {
   a:hover {
     color: #0066cc;
   }
+  /* Add these styles to your existing CSS file or create a new one */
+.book-container {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .book-aside {
+    flex: 1; /* This makes book-aside take up remaining space */
+    padding: 20px;
+  }
+  .extra-paragraph {
+    margin-top: 20px;
+    font-style: italic;
+    font-size: 14px;
+  }
+  .book-aside img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  /* Additional styling for better readability */
+  .book-aside p {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  .title{
+    font-size: 16px;
+  }
+  .book-data{
+    width: 250px;
+    padding: 20px;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: green;
+    font-size: larger;
+    outline: none;
+    margin-left: 2rem;
+  }
