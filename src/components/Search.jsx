@@ -63,7 +63,6 @@ function Search() {
       });
     }, 1000); // Simulate a 1-second delay
   };
-
   return (
     <div className='search'>
       <div className="hero">
@@ -189,6 +188,7 @@ function Search() {
           </div>
         </div>
       </div>
+     
     </div>
   );
 }

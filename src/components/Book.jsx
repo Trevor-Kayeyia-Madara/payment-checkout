@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Calculator from './Calculator';
 import './book.css';
 
 function Book() {
   const location = useLocation();
-
+  const navigate = useNavigate();  // Add this line
   const bookingDetails = location.state && location.state.bookingDetails;
 
   const [extras, setExtras] = useState({
@@ -18,6 +18,16 @@ function Book() {
     cleaningFee: true, // Default checked
   });
 
+  const [formData, setFormData] = useState({
+    firstName: '',
+    surname: '',
+    email: '',
+    phoneNumber: '',
+    city: '',
+    country: '',
+    zip: '',
+  });
+
   const handleExtrasChange = (extra) => {
     setExtras((prevExtras) => ({
       ...prevExtras,
@@ -25,20 +35,76 @@ function Book() {
     }));
   };
 
-  const calculateTotalPrice = () => {
-    let extrasPrice = 0;
-
-    if (bookingDetails) {
-      if (extras.laundry) extrasPrice += 10 * (bookingDetails.guests || 0) * (bookingDetails.nights || 0);
-      if (extras.satelliteTV) extrasPrice += 10 * (bookingDetails.guests || 0) * (bookingDetails.nights || 0);
-      if (extras.carRental) extrasPrice += 30 * (bookingDetails.nights || 0);
-      if (extras.seaView) extrasPrice += 10 * (bookingDetails.nights || 0);
-      if (extras.breakfast) extrasPrice += 10 * (bookingDetails.guests || 0) * (bookingDetails.nights || 0);
-      if (extras.wifi) extrasPrice += 100 * (bookingDetails.nights || 0);
-    }
-
-    return extrasPrice;
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
+
+  const handleBookNow = () => {
+    const { roomType, checkInDate, checkOutDate, guests, nights, totalPrice } = bookingDetails;
+
+  // Assuming you have a function or logic to save data to the database
+  // You can make a fetch request to your backend endpoint
+  // and pass formData to insert data into "Room" and "Guest" tables
+
+  // For example, you can make a fetch request here
+  fetch('http://localhost:3000/insert-room', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      room_type: roomType,
+      no_of_persons: guests,
+      room_rate: totalPrice, // You can adjust this based on your data
+      arrival_date: checkInDate,
+      departure_date: checkOutDate,
+      nights_spent: nights,
+      status: 'available',
+    }),
+  })
+    .then((response) => response.json())
+    .then((roomData) => {
+      // Assuming you handle the response appropriately
+      console.log(roomData);
+
+      // Now, make a fetch request for inserting into the Guest table
+      fetch('http://localhost:3000/insert-guest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          first_name: formData.firstName,
+          surname: formData.surname,
+          email: formData.email,
+          phone_number: formData.phoneNumber,
+          city: formData.city,
+          country: formData.country,
+          zip: formData.zip,
+          room_type: roomType,
+          extras: {}, // Adjust this based on your data
+        }),
+      })
+        .then((guestResponse) => guestResponse.json())
+        .then((guestData) => {
+          // Assuming you handle the response appropriately
+          console.log(guestData);
+
+
+            navigate('/checkout');
+            console.log('Navigate to /checkout');
+
+            // Redirect logic can be added based on your actual navigation setup
+          })
+          .catch((error) => console.error('Error inserting guest data:', error));
+      })
+      .catch((error) => console.error('Error inserting room data:', error));
+  };
+
 
   return (
     <div className='book'>
@@ -110,7 +176,97 @@ function Book() {
             </label>
           </div>
           <Calculator bookingDetails={bookingDetails} extras={extras} />
-          {/* The rest of your content */}
+                  <form
+          onSubmit={(e) => e.preventDefault()}
+          style={{ maxWidth: '400px', margin: '0 auto', padding: '20px', boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)', borderRadius: '5px' }}
+        >
+          <label style={{ display: 'block', margin: '10px 0' }}>
+            First Name:
+            <input
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleInputChange}
+              required
+              style={{ width: '100%', padding: '8px', boxSizing: 'border-box', marginTop: '5px' }}
+            />
+          </label>
+          <label style={{ display: 'block', margin: '10px 0' }}>
+            Surname:
+            <input
+              type="text"
+              name="surname"
+              value={formData.surname}
+              onChange={handleInputChange}
+              required
+              style={{ width: '100%', padding: '8px', boxSizing: 'border-box', marginTop: '5px' }}
+            />
+          </label>
+          <label style={{ display: 'block', margin: '10px 0' }}>
+            Email:
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+              style={{ width: '100%', padding: '8px', boxSizing: 'border-box', marginTop: '5px' }}
+            />
+          </label>
+          <label style={{ display: 'block', margin: '10px 0' }}>
+            Phone Number:
+            <input
+              type="tel"
+              name="phoneNumber"
+              value={formData.phoneNumber}
+              onChange={handleInputChange}
+              required
+              style={{ width: '100%', padding: '8px', boxSizing: 'border-box', marginTop: '5px' }}
+            />
+          </label>
+          <label style={{ display: 'block', margin: '10px 0' }}>
+            City:
+            <input
+              type="text"
+              name="city"
+              value={formData.city}
+              onChange={handleInputChange}
+              required
+              style={{ width: '100%', padding: '8px', boxSizing: 'border-box', marginTop: '5px' }}
+            />
+          </label>
+          <label style={{ display: 'block', margin: '10px 0' }}>
+            Country:
+            <input
+              type="text"
+              name="country"
+              value={formData.country}
+              onChange={handleInputChange}
+              required
+              style={{ width: '100%', padding: '8px', boxSizing: 'border-box', marginTop: '5px' }}
+            />
+          </label>
+          <label style={{ display: 'block', margin: '10px 0' }}>
+            ZIP:
+            <input
+              type="text"
+              name="zip"
+              value={formData.zip}
+              onChange={handleInputChange}
+              required
+              style={{ width: '100%', padding: '8px', boxSizing: 'border-box', marginTop: '5px' }}
+            />
+          </label>
+
+          <button
+            type="button"
+            onClick={() => handleBookNow(formData)}
+            style={{ backgroundColor: '#4CAF50', color: 'white', padding: '10px', border: 'none', borderRadius: '3px', cursor: 'pointer' }}
+          >
+            Book Now
+          </button>
+        </form>
+
         </div>
       </div>
     </div>
