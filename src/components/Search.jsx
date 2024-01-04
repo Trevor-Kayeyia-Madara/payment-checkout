@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
  import villa from './images/sultan.jpg';
  import dyke from './images/dyke collage.jpg';
 import './search.css';
 
 function Search() {
+  const navigate = useNavigate();
+
   const [selectedBranch, setSelectedBranch] = useState('All Branches');
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
@@ -35,7 +37,6 @@ function Search() {
   const handleMaxNightPriceChange = (event) => {
     setMaxNightPrice(parseInt(event.target.value, 10));
   };
-
   const handleBookNow = (property, price) => {
     const bookingData = {
       property,
@@ -46,24 +47,20 @@ function Search() {
       totalPrice: price,
     };
 
-    const apiUrl = 'https://your-backend-api.com/bookings';
-
-    fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(bookingData),
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Booking response:', data);
-        // Handle the response from the server, e.g., show a thank-you message
-      })
-      .catch(error => {
-        console.error('Error booking:', error);
-        // Handle errors, e.g., show an error message to the user
+    // Simulate a successful booking
+    // In a real scenario, you would make an API call here
+    setTimeout(() => {
+      console.log('Booking successful:', bookingData);
+      // Redirect to /book with booking details
+      navigate('/book', {
+        state: {
+          bookingDetails: bookingData,
+          checkInDate,
+          guests: selectedGuests,
+          nights: selectedNights,
+        },
       });
+    }, 1000); // Simulate a 1-second delay
   };
 
   return (
