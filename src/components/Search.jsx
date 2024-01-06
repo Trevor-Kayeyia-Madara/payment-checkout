@@ -183,7 +183,7 @@ function Search() {
                 <div className="user-icon">12 Guests</div>
                 <div className="size-icon">40ft</div>
               </div>
-              <button onClick={() => handleBookNow('Dyke Cottage', 200, dyke)}>Book Now for $180</button>
+              <button onClick={() => handleBookNow('Dyke Cottage', 180, dyke)}>Book Now for $180</button>
             </div>
           </div>
         </div>

@@ -16,17 +16,17 @@ const Calculator = ({ bookingDetails, extras }) => {
     let extrasPrice = 0;
 
     if (bookingDetails) {
-      if (extras.laundry) extrasPrice += 10 * (bookingDetails.guests || 0) * (bookingDetails.nights || 0);
-      if (extras.satelliteTV) extrasPrice += 10 * (bookingDetails.guests || 0) * (bookingDetails.nights || 0);
-      if (extras.carRental) extrasPrice += 30 * (bookingDetails.nights || 0);
-      if (extras.seaView) extrasPrice += 10 * (bookingDetails.nights || 0);
-      if (extras.breakfast) extrasPrice += 10 * (bookingDetails.guests || 0) * (bookingDetails.nights || 0);
-      if (extras.wifi) extrasPrice += 100 * (bookingDetails.nights || 0);
+      if (extras.laundry) extrasPrice += 10;
+      if (extras.satelliteTV) extrasPrice += 10;
+      if (extras.carRental) extrasPrice += 30;
+      if (extras.seaView) extrasPrice += 10;
+      if (extras.breakfast) extrasPrice += 10;
+      if (extras.wifi) extrasPrice += 100;
     }
 
     // Include cleaning fee in the total extras price if cleaning fee is checked
     if (extras.cleaningFee) {
-      extrasPrice += 10 * (bookingDetails?.nights || 0); // Adjust the calculation if needed
+      extrasPrice += 10; // Adjust the calculation if needed
     }
 
     setTotalExtrasPrice(extrasPrice);
