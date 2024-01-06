@@ -63,7 +63,6 @@ function Book() {
       arrival_date: checkInDate,
       departure_date: checkOutDate,
       nights_spent: nights,
-      status: 'available',
     }),
   })
     .then((response) => response.json())
@@ -86,7 +85,6 @@ function Book() {
           country: formData.country,
           zip: formData.zip,
           room_type: roomType,
-          extras: {}, // Adjust this based on your data
         }),
       })
         .then((guestResponse) => guestResponse.json())
@@ -95,7 +93,13 @@ function Book() {
           console.log(guestData);
 
 
-            navigate('/checkout');
+          navigate('/checkout', {
+            state: {
+              bookingDetails,
+              extras,
+              formData,
+            },
+          });
             console.log('Navigate to /checkout');
 
             // Redirect logic can be added based on your actual navigation setup

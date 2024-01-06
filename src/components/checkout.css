@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .checkout {
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .logo {
+    max-width: 200px;
+    margin-bottom: 20px;
+    background-color:gray;
+  }
+  
+  .hero {
+    background-image: url('./images/hotel_feture_1.jpg');
+    color: #ffff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+   
+  }
+  
+  nav {
+    margin-top: 20px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  li {
+    margin: 10px;
+  }
+  
+  a {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+  }
+  span.active {
+    border-radius: 50%;
+    background-color: green;
+    
+  }
+  .circle {
+    border: 2px solid white; /* Set the border style and color */
+    border-radius: 50%; /* Make it circular */
+    display: inline-block;
+    width: 20px; /* Set the width of the circle */
+    height: 20px; /* Set the height of the circle */
+    text-align: center; /* Center the number inside the circle */
+    line-height: 20px; /* Center the number vertically */
+    margin-right: 5px; /* Add some spacing between the circle and the text */
+  }
+  
+  a:hover {
+    color: #0066cc;
+  }
+.checkout-container {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .checkout-aside {
+    flex: 1; /* This makes book-aside take up remaining space */
+    padding: 20px;
+  }
+  .checkout-data{
+    width: 250px;
+    padding: 20px;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: green;
+    font-size: larger;
+    outline: none;
+    margin-left: 2rem;
+  }
+  .checkout-aside img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  /* Additional styling for better readability */
+  .checkout-aside p {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  .checkout-content{
+    flex:1;
+  }
+  .payment-option {
+    /* Add your styling properties here */
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+    margin-bottom: 2rem;
+  }
+  
+  .payment-option:hover {
+    background-color: #2980b9;
+  }
+  
